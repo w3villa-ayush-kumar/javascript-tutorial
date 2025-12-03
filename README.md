@@ -216,13 +216,6 @@ async function fetchData() {
   - Cannot run OS commands.
   - Limited to browser-safe operations.
 
-## 💡 Why This Matters
-
-- JavaScript turns static pages into dynamic applications.
-- Enables real-time UI updates, async communication, animations, interactivity.
-- Understanding JS engines + browser runtime helps write efficient, secure code.
-- Important foundation before DOM, async JS, modules, frameworks.
-
 ---
 
 # Variables & Data Types
@@ -299,15 +292,6 @@ const greet2 = function (name) {
   return `Hi, ${name}`;
 };
 ```
-
----
-
-## 💡 Why This Matters
-
-- Primitives vs objects behave differently in memory.
-- Arrays/objects store real-world structured data.
-- Functions power interactivity and logic.
-- Dynamic typing gives flexibility but requires understanding behavior.
 
 ---
 
@@ -527,3 +511,216 @@ nums.forEach((n) => console.log(n));
 ```
 
 ---
+
+# Functions in JavaScript
+
+## 🔹 Function Declarations, Expressions & Arrow Functions
+
+### **Function Declaration**
+
+```js
+function greet(name) {
+  return `Hello, ${name}`;
+}
+```
+
+### **Function Expression**
+
+```js
+const greet = function (name) {
+  return `Hello, ${name}`;
+};
+```
+
+### **Arrow Function**
+
+```js
+const greet = (name) => `Hello, ${name}`;
+```
+
+- Shorter syntax
+- `this` is lexically scoped
+
+---
+
+## 🔹 Parameters & Return Values
+
+```js
+function add(a, b) {
+  return a + b;
+}
+
+add(3, 4); // 7
+```
+
+- Parameters are placeholders
+- Arguments are values passed during function call
+- If no return is given → function returns `undefined`
+
+---
+
+## 🔹 Understanding Scope & Closures
+
+### **Scope Types**
+
+- **Global Scope** — accessible everywhere
+- **Function Scope** — inside a function only
+- **Block Scope** (`let`, `const`)
+
+```js
+function test() {
+  let x = 10;
+}
+// x is not accessible here
+```
+
+### **Closure**
+
+A closure allows a function to remember outer variables even after the outer function finishes.
+
+```js
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    return count;
+  };
+}
+
+const counter = outer();
+counter(); // 1
+counter(); // 2
+```
+
+# Arrays in JavaScript
+
+## 🔹 Creating & Manipulating Arrays
+
+Arrays store ordered collections of values.
+
+```js
+let fruits = ["Apple", "Banana", "Cherry"];
+```
+
+### **push()** — Add to end
+
+```js
+fruits.push("Mango");
+```
+
+### **pop()** — Remove from end
+
+```js
+fruits.pop();
+```
+
+### **shift()** — Remove from start
+
+```js
+fruits.shift();
+```
+
+### **unshift()** — Add to start
+
+```js
+fruits.unshift("Orange");
+```
+
+---
+
+## 🔹 Advanced Array Methods
+
+Powerful methods for transforming and processing arrays.
+
+### **forEach()** — Loop through elements
+
+```js
+fruits.forEach((item) => console.log(item));
+```
+
+### **map()** — Transform each element, return new array
+
+```js
+let lengths = fruits.map((f) => f.length);
+```
+
+### **filter()** — Keep elements that match a condition
+
+```js
+let longFruits = fruits.filter((f) => f.length > 5);
+```
+
+### **reduce()** — Accumulate values into a single output
+
+```js
+let total = [1, 2, 3, 4].reduce((sum, num) => sum + num, 0);
+```
+
+# String Manipulation in JavaScript
+
+## 🔹 Common String Methods
+
+Strings are immutable, but methods return new modified strings.
+
+### **slice(start, end)**
+
+Extracts a portion of a string.
+
+```js
+"JavaScript".slice(0, 4); // "Java"
+```
+
+### **substring(start, end)**
+
+Similar to slice but doesn't accept negative indexes.
+
+```js
+"JavaScript".substring(4, 10); // "Script"
+```
+
+### **replace(search, replacement)**
+
+Replaces first match.
+
+```js
+"Hello World".replace("World", "JS"); // "Hello JS"
+```
+
+### **split(separator)**
+
+Splits string into array.
+
+```js
+"a,b,c".split(","); // ["a", "b", "c"]
+```
+
+### **toUpperCase()**
+
+```js
+"hello".toUpperCase(); // "HELLO"
+```
+
+### **toLowerCase()**
+
+```js
+"HELLO".toLowerCase(); // "hello"
+```
+
+---
+
+## 🔹 Template Literals & String Interpolation
+
+Use backticks for multi-line strings and embedding expressions.
+
+```js
+let name = "Ayush";
+let greeting = `Hello, ${name}! Welcome to JavaScript.`;
+```
+
+Supports multi-line:
+
+```js
+let msg = `This is
+multi-line
+text.`;
+```

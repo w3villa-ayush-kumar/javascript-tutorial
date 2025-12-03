@@ -3,7 +3,7 @@ var name = "Ayush";
 let currAge = 25;
 const country = "India";
 
-console.log(name, age, country);
+console.log(name, currAge, country);
 
 // 2. Create an object and log one key
 const student = {
