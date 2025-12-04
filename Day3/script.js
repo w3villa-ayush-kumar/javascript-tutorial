@@ -1,8 +1,9 @@
 // 1. Function to add two numbers and return result
 
-function addNumbers(a, b) {
+function addNums(a, b) {
   return a + b;
 }
+console.log("Sum of 2 and 4 is ", addNums(2, 4));
 
 // 2. Closure that retains access to a local variable
 
@@ -27,9 +28,12 @@ counter();
 function multiply(x, y) {
   return x * y;
 }
+console.log("Multiplication of 2 and 4 is ", multiply(2, 4));
+
 
 // Arrow function
 const multiplyArrow = (x, y) => x * y;
+console.log("Multiplication of 2 and 4 is ", multiplyArrow(2, 4));
 
 
 // 4. Create an array and demonstrate basic operations
@@ -57,26 +61,34 @@ console.log("Array Length:", data.length);
 // 5. Use map() to multiply all values by 2
 
 let multiplied = data.map(num => num * 2);
+console.log("Array using map(): ", multiplied);
 
 
 // 6. Use filter() to get even numbers
 
 let evenNum = data.filter(num => num % 2 === 0);
+console.log("Array using filter(): ", evenNum);
 
 
 // 7. Extract a substring from a full name
 
 let fullName = "Ayush Kumar";
+console.log("Full Name: ", fullName);
+
 let firstName = fullName.substring(0, 5);
+console.log("First Name: ", firstName);
 
 
 // 8. Replace a word in a sentence
 
 let sentence = "JavaScript is difficult";
+console.log("Sentence before update: ", sentence);
+
 let updatedSentence = sentence.replace("difficult", "fun");
+console.log("Sentence after update: ", updatedSentence);
 
 
 // 9. Use template literals to construct a greeting
 
 let user = "Ayush";
-let greeting = `Hello, ${user}! Welcome to JavaScript learning.`;
+console.log(`Hello, ${user}! Welcome to JavaScript learning.`);
