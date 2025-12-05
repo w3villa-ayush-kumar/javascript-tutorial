@@ -724,3 +724,61 @@ let msg = `This is
 multi-line
 text.`;
 ```
+
+# Object Manipulation in JavaScript
+
+## 🔹 Creating Objects
+
+Objects store key-value pairs.
+
+```js
+let user = {
+  name: "Ayush",
+  age: 25,
+  city: "Delhi",
+};
+```
+
+---
+
+## 🔹 Accessing Properties
+
+### Dot Notation
+
+```js
+user.name; // "Ayush"
+```
+
+### Bracket Notation
+
+Useful when using dynamic keys.
+
+```js
+user["city"]; // "Delhi"
+```
+
+---
+
+## 🔹 Adding Properties
+
+```js
+user.country = "India";
+```
+
+---
+
+## 🔹 Modifying Properties
+
+```js
+user.age = 26;
+```
+
+---
+
+## 🔹 Deleting Properties
+
+```js
+delete user.city;
+```
+
+---
