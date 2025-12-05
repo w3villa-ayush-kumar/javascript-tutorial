@@ -16,7 +16,7 @@ function outerFunc() {
   return innerFunc;
 }
 
-const counter = outerFunc();  
+const counter = outerFunc();
 counter();
 counter();
 counter();
@@ -68,27 +68,3 @@ console.log("Array using map(): ", multiplied);
 
 let evenNum = data.filter(num => num % 2 === 0);
 console.log("Array using filter(): ", evenNum);
-
-
-// 7. Extract a substring from a full name
-
-let fullName = "Ayush Kumar";
-console.log("Full Name: ", fullName);
-
-let firstName = fullName.substring(0, 5);
-console.log("First Name: ", firstName);
-
-
-// 8. Replace a word in a sentence
-
-let sentence = "JavaScript is difficult";
-console.log("Sentence before update: ", sentence);
-
-let updatedSentence = sentence.replace("difficult", "fun");
-console.log("Sentence after update: ", updatedSentence);
-
-
-// 9. Use template literals to construct a greeting
-
-let user = "Ayush";
-console.log(`Hello, ${user}! Welcome to JavaScript learning.`);
