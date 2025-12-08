@@ -782,3 +782,169 @@ delete user.city;
 ```
 
 ---
+
+# Error Handling in JavaScript
+
+## 🔹 Using try...catch for Exceptions
+
+`try...catch` helps handle runtime errors without stopping program execution.
+
+```js
+try {
+  let result = JSON.parse("invalid JSON");
+} catch (error) {
+  console.error("Error occurred:", error.message);
+}
+```
+
+- Code in `try` runs normally
+- If an error occurs, control jumps to `catch`
+
+---
+
+## 🔹 Throwing Custom Errors
+
+You can throw your own descriptive errors for clarity.
+
+```js
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Division by zero is not allowed");
+  }
+  return a / b;
+}
+```
+
+```js
+try {
+  divide(5, 0);
+} catch (err) {
+  console.error(err.message);
+}
+```
+
+---
+
+## 🔹 Best Practices for Error Handling
+
+- Always provide meaningful error messages
+- Avoid silent failures (don’t ignore errors)
+- Validate user inputs before processing
+- Wrap risky operations (API calls, JSON parsing, DB access)
+- Use `finally` when cleanup is required (closing connections, removing loaders)
+
+```js
+try {
+  // API call
+} catch (err) {
+  console.error("Request failed", err);
+} finally {
+  console.log("Operation completed");
+}
+```
+
+---
+
+# Events in JavaScript
+
+## 🔹 What Are Events?
+
+Events are actions or occurrences that happen in the browser and can be responded to using JavaScript.
+
+Examples of common events:
+
+- **click** → user clicks an element
+- **load** → page or resource finishes loading
+- **keypress / keydown / keyup** → keyboard interaction
+- **submit** → form submission
+- **mouseover / mouseout** → cursor enters or leaves an element
+- **change** → input value changes
+- **scroll** → page scrolling
+
+---
+
+## 🔹 Event Listeners
+
+Event listeners allow you to run code when a specific event occurs.
+
+### **addEventListener()** (recommended modern approach)
+
+```js
+document.getElementById("btn").addEventListener("click", function () {
+  console.log("Button clicked");
+});
+```
+
+### **Inline Handlers** (not recommended in modern development)
+
+```html
+<button onclick="alert('Clicked')">Click Me</button>
+```
+
+### **on properties**
+
+```js
+button.onclick = function () {
+  console.log("Clicked via on property");
+};
+```
+
+---
+
+## 🔹 Event Object
+
+When an event occurs, it automatically passes an **event object** to the handler.
+
+```js
+document.addEventListener("click", function (event) {
+  console.log(event.type); // "click"
+  console.log(event.target); // element clicked
+});
+```
+
+---
+
+## 🔹 Event Propagation
+
+Determines how events travel through the DOM.
+
+### 1. **Capturing Phase** (top → down)
+
+### 2. **Target Phase** (element where event occurred)
+
+### 3. **Bubbling Phase** (bottom → up)
+
+```js
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child clicked");
+});
+```
+
+Most events bubble by default.
+
+---
+
+## 🔹 event.preventDefault()
+
+Prevents default browser actions.
+
+Examples:
+
+- Stop form from refreshing page on submit
+- Prevent link navigation
+
+```js
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log("Form submission stopped");
+});
+```
+
+```js
+document.querySelector("a").addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("Link action prevented");
+});
+```
+
+---
