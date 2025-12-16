@@ -948,3 +948,200 @@ document.querySelector("a").addEventListener("click", function (e) {
 ```
 
 ---
+
+# Asynchronous JavaScript
+
+## 🔹 Callbacks
+
+A callback is a function passed as an argument to another function, executed later.
+
+```js
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data received");
+  }, 1000);
+}
+
+fetchData((result) => {
+  console.log(result);
+});
+```
+
+---
+
+## 🔹 setTimeout()
+
+Executes a function **once** after a specified delay (in milliseconds).
+
+```js
+setTimeout(() => {
+  console.log("Runs after 2 seconds");
+}, 2000);
+```
+
+---
+
+## 🔹 setInterval()
+
+Executes a function **repeatedly** at fixed intervals.
+
+```js
+let count = 0;
+const timer = setInterval(() => {
+  count++;
+  console.log(count);
+  if (count === 3) clearInterval(timer);
+}, 1000);
+```
+
+---
+
+## 🔹 Promises
+
+A Promise represents a value that may be available now, later, or never.
+
+### Creating a Promise
+
+```js
+const promise = new Promise((resolve, reject) => {
+  let success = true;
+  if (success) {
+    resolve("Operation successful");
+  } else {
+    reject("Operation failed");
+  }
+});
+```
+
+---
+
+## 🔹 Promise Methods
+
+### **then()** — runs on success
+
+```js
+promise.then((result) => {
+  console.log(result);
+});
+```
+
+### **catch()** — runs on failure
+
+```js
+promise.catch((error) => {
+  console.error(error);
+});
+```
+
+### **finally()** — always runs
+
+```js
+promise.finally(() => {
+  console.log("Promise completed");
+});
+```
+
+---
+
+Promises help avoid callback hell and make async code easier to read and maintain.
+
+# ES6 Features
+
+## 🔹 Destructuring
+
+Extract values from arrays or properties from objects into variables.
+
+### Object Destructuring
+
+```js
+const user = { name: "Ayush", age: 25 };
+const { name, age } = user;
+```
+
+### Array Destructuring
+
+```js
+const nums = [10, 20, 30];
+const [first, second] = nums;
+```
+
+---
+
+## 🔹 Template Literals
+
+Use backticks for strings with interpolation and multi-line support.
+
+```js
+const name = "Ayush";
+const msg = `Hello ${name}, welcome!`;
+```
+
+---
+
+## 🔹 Default Parameters
+
+Provide default values for function parameters.
+
+```js
+function greet(name = "Guest") {
+  return `Hello ${name}`;
+}
+
+greet(); // Hello Guest
+```
+
+---
+
+## 🔹 Rest Operator (...)
+
+Collects multiple values into an array.
+
+```js
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0);
+}
+```
+
+---
+
+## 🔹 Spread Operator (...)
+
+Expands arrays or objects.
+
+### Arrays
+
+```js
+const a = [1, 2];
+const b = [...a, 3, 4];
+```
+
+### Objects
+
+```js
+const obj1 = { x: 1 };
+const obj2 = { ...obj1, y: 2 };
+```
+
+---
+
+## 🔹 Modules (import / export)
+
+Split code into reusable files.
+
+### export
+
+```js
+export function add(a, b) {
+  return a + b;
+}
+```
+
+### import
+
+```js
+import { add } from "./math.js";
+```
+
+---
+
+ES6 features make JavaScript cleaner, more powerful, and easier to maintain.
