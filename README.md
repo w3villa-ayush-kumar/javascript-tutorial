@@ -1145,3 +1145,255 @@ import { add } from "./math.js";
 ---
 
 ES6 features make JavaScript cleaner, more powerful, and easier to maintain.
+
+# JavaScript in Node.js
+
+## 🔹 Running JavaScript in the Node.js Environment
+
+- **Node.js** allows JavaScript to run outside the browser.
+- It is built on the **V8 JavaScript engine** (same engine used by Chrome).
+- Common use cases:
+
+  - Backend servers
+  - APIs
+  - CLI tools
+  - File system operations
+
+Run JS using terminal:
+
+```bash
+node app.js
+```
+
+---
+
+## 🔹 Setting Up & Running a JavaScript File
+
+1. Install Node.js
+2. Create a file:
+
+```bash
+touch index.js
+```
+
+3. Add JS code:
+
+```js
+console.log("Hello from Node.js");
+```
+
+4. Run it:
+
+```bash
+node index.js
+```
+
+---
+
+## 🔹 Browser vs Node.js
+
+| Browser JavaScript  | Node.js JavaScript        |
+| ------------------- | ------------------------- |
+| Runs in browser     | Runs on server / terminal |
+| Has DOM, window     | No DOM, no window         |
+| Focus on UI         | Focus on backend & system |
+| Limited file access | Full file system access   |
+
+---
+
+## 🔹 JavaScript Engine
+
+- Node.js uses **V8 engine** to execute JavaScript.
+- Engine responsibilities:
+
+  - Parse JS code
+  - Compile to machine code
+  - Execute efficiently
+
+---
+
+## 🔹 process & Environment Variables
+
+### process object
+
+Provides information about the current Node.js process.
+
+```js
+console.log(process.pid);
+console.log(process.version);
+```
+
+### Environment Variables
+
+Used for configuration (API keys, ports, secrets).
+
+```js
+process.env.PORT = 3000;
+console.log(process.env.PORT);
+```
+
+---
+
+## 🔹 File System (fs) Module
+
+Used to read/write files.
+
+### Read File (Sync)
+
+```js
+const fs = require("fs");
+const data = fs.readFileSync("file.txt", "utf8");
+```
+
+### Write File (Sync)
+
+```js
+fs.writeFileSync("file.txt", "Hello Node");
+```
+
+---
+
+## 🔹 Synchronous vs Asynchronous (Node Context)
+
+- **Synchronous** → blocks execution
+- **Asynchronous** → non-blocking, preferred
+
+```js
+fs.readFile("file.txt", "utf8", (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+```
+
+---
+
+Node.js enables JavaScript to work beyond the browser, making it a full-stack language.
+
+# The `this` Keyword and Scope in JavaScript
+
+## 🔹 What is `this`?
+
+`this` refers to the object that is **executing the current function**. Its value is determined by **how a function is called**, not where it is defined.
+
+---
+
+## 🔹 `this` in Global Context
+
+### In Browser
+
+```js
+console.log(this); // window
+```
+
+### In Strict Mode
+
+```js
+"use strict";
+console.log(this); // undefined
+```
+
+---
+
+## 🔹 `this` in Regular Functions
+
+```js
+function show() {
+  console.log(this);
+}
+show();
+```
+
+- In non-strict mode → `this` refers to global object
+- In strict mode → `this` is `undefined`
+
+---
+
+## 🔹 `this` in Objects
+
+When a function is called as an object method, `this` refers to the object.
+
+```js
+const user = {
+  name: "Ayush",
+  greet() {
+    console.log(this.name);
+  },
+};
+
+user.greet(); // Ayush
+```
+
+---
+
+## 🔹 `this` in Arrow Functions
+
+Arrow functions **do not have their own `this`**. They inherit `this` from their surrounding (lexical) scope.
+
+```js
+const user = {
+  name: "Ayush",
+  greet: () => {
+    console.log(this.name);
+  },
+};
+
+user.greet(); // undefined
+```
+
+### Correct Usage
+
+```js
+const user = {
+  name: "Ayush",
+  greet() {
+    const inner = () => {
+      console.log(this.name);
+    };
+    inner();
+  },
+};
+
+user.greet(); // Ayush
+```
+
+---
+
+## 🔹 `this` in Event Handlers
+
+```js
+button.addEventListener("click", function () {
+  console.log(this); // button element
+});
+
+button.addEventListener("click", () => {
+  console.log(this); // inherited from outer scope
+});
+```
+
+---
+
+## 🔹 Scope vs `this`
+
+### Scope
+
+- Scope determines **where variables are accessible**
+- Types: Global, Function, Block
+
+### `this`
+
+- `this` determines **who owns the function execution**
+- Not related to lexical scope
+
+---
+
+## 💡 Key Takeaways
+
+- `this` depends on **call-site**
+- Regular functions → dynamic `this`
+- Arrow functions → lexical `this`
+- Objects bind `this` when calling methods
+- Scope and `this` are different concepts
+
+---
+
+Understanding `this` is critical for working with objects, callbacks, and modern JavaScript patterns.
